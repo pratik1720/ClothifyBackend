@@ -22,18 +22,34 @@ public class Order {
    @ManyToOne
    @JoinColumn(name="uid")
    private User uid;
+   
+   @ManyToOne
+   @JoinColumn(name="pid")
+   private Pickup pid;
 public Order() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public Order(int oid, Date pickupDate, String pickupDescription, int noOfItems, User uid) {
+
+public Order(int oid, Date pickupDate, String pickupDescription, int noOfItems, User uid, Pickup pid) {
 	super();
 	this.oid = oid;
 	this.pickupDate = pickupDate;
 	this.pickupDescription = pickupDescription;
 	this.noOfItems = noOfItems;
 	this.uid = uid;
+	this.pid = pid;
 }
+
+
+public Pickup getPid() {
+	return pid;
+}
+
+public void setPid(Pickup pid) {
+	this.pid = pid;
+}
+
 public int getOid() {
 	return oid;
 }

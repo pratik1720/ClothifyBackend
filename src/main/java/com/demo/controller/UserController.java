@@ -51,11 +51,17 @@ public class UserController {
    }
    @PostMapping("/reset")
    public ResponseEntity<User> resetpass(@RequestBody User user){
-	   
+	   System.out.println(user);
 	        User user1=service.checkUser(user.getUsername(),user.getEmail());
+	        System.out.println(user1);
 	   if(user1!=null) {
-		  
-		  return ResponseEntity.ok(user1);
+		   System.out.println(user.getPassword());
+		   int update=service.updatePassword(user.getPassword(),user1.getUid());
+		   if(update>0) {
+			   System.out.println(user1);
+			   return ResponseEntity.ok(user1);
+		   }
+		
 	   }
 	   return ResponseEntity.noContent().build();
    }
@@ -64,6 +70,7 @@ public class UserController {
    public ResponseEntity<?> checkPass(@RequestBody User user ){
 	   
 	   User user1=service.findByPassword(user.getPassword());
+	   System.out.println(user);
 	   if(user1!=null) {
 		 
 		  return ResponseEntity.ok(user1);

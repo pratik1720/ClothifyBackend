@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,16 @@ public class PickupServiceImpl implements PickupService {
 		// TODO Auto-generated method stub
 		 System.out.println(username);
 		return pickupdao.checkPickup(username,password);
+	}
+	@Override
+	public List<Pickup> getAllPickUpPersons() {
+		// TODO Auto-generated method stub
+		return pickupdao.findAll();
+	}
+	@Override
+	public Pickup add(Pickup pickup) {
+		// TODO Auto-generated method stub
+		return pickupdao.save(pickup);
 	}
 
 }

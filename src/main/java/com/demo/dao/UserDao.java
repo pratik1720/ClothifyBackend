@@ -27,7 +27,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Query(value="update user  set password=:pass where uid=:i",nativeQuery = true)
 	int updatePass(String pass, int i);
      
-    @Query(value=" select uid,username,name,email,phone_no,address,oid,no_of_items,pickup_date ,pickup_description from user natural join pickuporder",nativeQuery = true)
+    @Query(value=" select u.uid,username,name,email,phone_no,address,oid,no_of_items,pickup_date ,pickup_description from user u  join pickuporder p where u.uid=p.uid",nativeQuery = true)
 	List<Object> getOrders();
 	
    
